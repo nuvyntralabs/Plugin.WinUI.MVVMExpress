@@ -1,4 +1,3 @@
-using Microsoft.UI.Xaml.Controls;
 using Plugin.WinUI.MVVMExpress.ComponentModel;
 using Plugin.WinUI.MVVMExpress.Navigation;
 using Plugin.WinUI.MVVMExpress.Threading;
@@ -11,7 +10,7 @@ public sealed class FrameNavigatorTests
     public async Task ResetAsync_WithoutFrame_FailsWithE_PAGE()
     {
         var navigator = new WinUIFrameNavigator(frame: () => null, mainThread: ImmediateMainThread.Instance)
-            .Map<HomeViewModel, HomeView>("home");
+            .Map(typeof(HomeViewModel), typeof(object), "home");
 
         var result = await navigator.ResetAsync<HomeViewModel>();
 
@@ -24,7 +23,7 @@ public sealed class FrameNavigatorTests
     {
         var thread = new RecordingMainThread();
         var navigator = new WinUIFrameNavigator(frame: () => null, mainThread: thread)
-            .Map<HomeViewModel, HomeView>("home");
+            .Map(typeof(HomeViewModel), typeof(object), "home");
 
         await navigator.ResetAsync<HomeViewModel>();
 
@@ -32,10 +31,6 @@ public sealed class FrameNavigatorTests
     }
 
     private sealed class HomeViewModel : ViewModel
-    {
-    }
-
-    private sealed class HomeView : UserControl
     {
     }
 

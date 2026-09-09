@@ -1,0 +1,15 @@
+<Project>
+  <!-- Testhost must stay a normal class library. UseWinUI rewrites the output
+       layout and testhost then fails to load Microsoft.TestPlatform.CoreUtilities. -->
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <UseWinUI>false</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <EnableMsixTooling>false</EnableMsixTooling>
+    <EnableCoreMrtTooling>false</EnableCoreMrtTooling>
+    <WindowsAppSDKSelfContained>false</WindowsAppSDKSelfContained>
+    <WindowsAppSdkBootstrapInitialize>false</WindowsAppSdkBootstrapInitialize>
+    <GenerateAppxPackageOnBuild>false</GenerateAppxPackageOnBuild>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+</Project>
