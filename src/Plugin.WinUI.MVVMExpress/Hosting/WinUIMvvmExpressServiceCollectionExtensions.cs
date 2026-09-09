@@ -13,6 +13,7 @@ namespace Plugin.WinUI.MVVMExpress.Hosting;
 /// <summary>WinUI 3 host entry point.</summary>
 public static class WinUIMvvmExpressServiceCollectionExtensions
 {
+    /// <summary>Registers Core plus the family dispatcher, window context, and lifecycle.</summary>
     public static IServiceCollection AddWinUIMvvmExpress(
         this IServiceCollection services,
         Action<MvvmExpressOptions>? configure = null)
@@ -23,6 +24,7 @@ public static class WinUIMvvmExpressServiceCollectionExtensions
         return UseWinUIMvvmExpress(services, options);
     }
 
+    /// <summary>Registers MVVMExpress on <paramref name="builder"/>.</summary>
     public static IHostApplicationBuilder UseWinUIMvvmExpress(
         this IHostApplicationBuilder builder,
         Action<MvvmExpressOptions>? configure = null)
@@ -32,6 +34,7 @@ public static class WinUIMvvmExpressServiceCollectionExtensions
         return builder;
     }
 
+    /// <summary>Registers MVVMExpress on <paramref name="services"/>.</summary>
     public static IServiceCollection UseWinUIMvvmExpress(
         this IServiceCollection services,
         Action<MvvmExpressOptions>? configure)

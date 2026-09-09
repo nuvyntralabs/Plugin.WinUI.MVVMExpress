@@ -1,9 +1,59 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Niladri Prasad Padhy",
-  "classifications": ["WinUI 3", "MVVM"],
+  "classifications": [
+    "WinUI",
+    "MVVM",
+    "Code"
+  ],
   "identity": "Plugin.WinUI.MVVMExpress.Page",
-  "name": "WinUI 3 MVVMExpress Page",
+  "groupIdentity": "Plugin.WinUI.MVVMExpress.Page",
+  "name": "MVVMExpress WinUI Page",
   "shortName": "winui-mvvmexpress-page",
-  "sourceName": "Feature"
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "sourceName": "Feature",
+  "preferNameDirectory": true,
+  "description": "WinUI Page, ViewModel, registered service, and commands for Plugin.WinUI.MVVMExpress.",
+  "defaultName": "Feature",
+  "symbols": {
+    "RootNamespace": {
+      "type": "parameter",
+      "description": "Root namespace for the generated types",
+      "replaces": "App1",
+      "datatype": "text",
+      "defaultValue": "App1"
+    },
+    "LowerName": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "name",
+        "toLower": true
+      },
+      "replaces": "feature"
+    }
+  },
+  "primaryOutputs": [
+    {
+      "path": "FeaturePage.xaml"
+    },
+    {
+      "path": "FeaturePage.xaml.cs"
+    },
+    {
+      "path": "FeatureViewModel.cs"
+    },
+    {
+      "path": "IFeatureService.cs"
+    },
+    {
+      "path": "FeatureService.cs"
+    },
+    {
+      "path": "FeatureServiceCollectionExtensions.cs"
+    }
+  ]
 }

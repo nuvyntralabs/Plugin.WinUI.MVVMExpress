@@ -1,0 +1,20 @@
+<Page
+    x:Class="App1.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid Margin="24">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <StackPanel Orientation="Horizontal" Spacing="8">
+      <Button Content="Increment" Command="{Binding IncrementCommand}" />
+      <Button Content="Details" Command="{Binding OpenDetailsCommand}" />
+      <Button Content="Edit form" Command="{Binding OpenEditCommand}" />
+      <Button Content="Toast" Command="{Binding ToastCommand}" />
+    </StackPanel>
+    <TextBlock Grid.Row="1" Margin="0,12" FontSize="16" Text="{Binding Count}" />
+    <ListView Grid.Row="2" ItemsSource="{Binding Catalog}" />
+  </Grid>
+</Page>

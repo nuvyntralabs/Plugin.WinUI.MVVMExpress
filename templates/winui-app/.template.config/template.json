@@ -1,10 +1,63 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Niladri Prasad Padhy",
-  "classifications": ["WinUI 3", "MVVM", "MauiEssentials"],
-  "identity": "Plugin.WinUI.MVVMExpress.App",
-  "name": "WinUI 3 MVVMExpress App",
+  "classifications": [
+    "WinUI",
+    "Windows",
+    "MVVM"
+  ],
+  "identity": "Plugin.WinUI.MVVMExpress.WinUIApp",
+  "groupIdentity": "Plugin.WinUI.MVVMExpress",
+  "name": "MVVMExpress WinUI App",
   "shortName": "winui-mvvmexpress",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
   "sourceName": "App1",
-  "preferNameDirectory": true
+  "preferNameDirectory": true,
+  "description": "A WinUI 3 app using Plugin.WinUI.MVVMExpress: Frame navigation, login replace-root, list, form, dialogs, and tests.",
+  "defaultName": "App1",
+  "guids": [
+    "2C4E6A80-1B3D-4F5A-9C7E-8D0F1A2B3C4D",
+    "3D5F7B91-2C4E-506B-AD8F-9E1A2B3C4D5E",
+    "4E608CA2-3D5F-617C-BE90-AF2B3C4D5E6F"
+  ],
+  "symbols": {
+    "LowerName": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "name",
+        "toLower": true
+      },
+      "replaces": "app1"
+    }
+  },
+  "primaryOutputs": [
+    {
+      "path": "App1.sln"
+    },
+    {
+      "path": "App1/App1.csproj"
+    },
+    {
+      "path": "App1.Core/App1.Core.csproj"
+    },
+    {
+      "path": "App1.Tests/App1.Tests.csproj"
+    }
+  ],
+  "postActions": [
+    {
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
 }

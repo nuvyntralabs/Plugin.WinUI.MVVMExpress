@@ -4,7 +4,7 @@ Modular MVVM for **WinUI 3** on .NET 10: ViewModels, async commands, Frame navig
 
 **Product:** MVVMExpress (WinUI 3 family)
 **Package prefix:** `Plugin.WinUI.MVVMExpress`
-**Status:** `0.1.0-preview`
+**Status:** `1.0.0`
 **This is not** Plugin.Maui.MVVMExpress, Plugin.Wpf.MVVMExpress, or the other desktop families. Independent port — no PackageReference to those packages.
 
 [![NuGet](https://img.shields.io/nuget/v/Plugin.WinUI.MVVMExpress.Core.svg?label=NuGet)](https://www.nuget.org/packages/Plugin.WinUI.MVVMExpress.Core)
@@ -29,6 +29,16 @@ builder.Services.UseWinUIMvvmExpress(o => o
 ```
 
 There is no Shell host. Use a `Frame` named `NavigationHost`.
+
+## Templates and IDE extensions
+
+| Host | How |
+| --- | --- |
+| CLI | `Plugin.WinUI.MVVMExpress.Templates` |
+| Visual Studio Code | Search WinUI 3 MVVMExpress |
+| Visual Studio 2022+ | Search WinUI 3 MVVMExpress |
+
+Extensions install the NuGet template pack and run `dotnet new`. Marketplace publish is manual from the `ide-extensions` workflow artifact.
 
 ## Templates
 

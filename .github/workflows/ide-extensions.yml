@@ -1,0 +1,111 @@
+name: IDE extensions
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*.*.*"]
+    paths:
+      - "extensions/**"
+      - ".github/workflows/ide-extensions.yml"
+      - ".github/scripts/check-versions.py"
+  workflow_dispatch:
+
+concurrency:
+  group: ide-extensions-${ github.ref }
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  version-align:
+    name: Version alignment
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        shell: bash
+    outputs:
+      version: ${ steps.check.outputs.version }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Require extension versions match Directory.Build.props
+        id: check
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/check-versions.py --plugin-root . --scope extensions
+
+  vscode:
+    name: VS Code extension
+    needs: [version-align]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Pack VSIX
+        run: |
+          set -euo pipefail
+          version="${ needs.version-align.outputs.version }"
+          mkdir -p artifacts
+          chmod +x extensions/vscode/pack.sh
+          ./extensions/vscode/pack.sh "$PWD/artifacts/nuvyntralabs.winui-mvvmexpress-${version}.vsix"
+
+      - name: Upload VS Code VSIX
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: vscode-WinUIMVVMExpress
+          path: artifacts/nuvyntralabs.winui-mvvmexpress-*.vsix
+          if-no-files-found: error
+          retention-days: 14
+
+  vsix:
+    name: Visual Studio VSIX
+    needs: [version-align]
+    runs-on: windows-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pack VSIX
+        run: |
+          set -euo pipefail
+          version="${ needs.version-align.outputs.version }"
+          mkdir -p artifacts
+          chmod +x extensions/visualstudio/pack-vsix.sh
+          ./extensions/visualstudio/pack-vsix.sh "$PWD/artifacts/nuvyntralabs.WinUIMVVMExpress.VisualStudio.${version}.vsix"
+
+      - name: Upload VSIX
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsix-WinUIMVVMExpress
+          path: artifacts/nuvyntralabs.WinUIMVVMExpress.VisualStudio.*.vsix
+          if-no-files-found: error
+          retention-days: 14

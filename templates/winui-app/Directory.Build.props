@@ -1,5 +1,9 @@
 <Project>
   <PropertyGroup>
-    <WinUIMvvmExpressVersion>0.1.0-preview</WinUIMvvmExpressVersion>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <WinUIMvvmExpressVersion>1.0.0</WinUIMvvmExpressVersion>
   </PropertyGroup>
 </Project>

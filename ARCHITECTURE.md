@@ -1,6 +1,6 @@
 # Plugin.WinUI.MVVMExpress Architecture
 
-Independent WinUI 3 MVVM family. **0.1.0-preview.** Aligned with the Plugin.Maui.MVVMExpress 1.3 / Plugin.Wpf.MVVMExpress 1.0 Core contract, but **not** a package reference to those families.
+Independent WinUI 3 MVVM family. **1.0.0.** Aligned with the Plugin.Maui.MVVMExpress 1.3 / Plugin.Wpf.MVVMExpress 1.0 Core contract, but **not** a package reference to those families.
 
 ## Principles
 

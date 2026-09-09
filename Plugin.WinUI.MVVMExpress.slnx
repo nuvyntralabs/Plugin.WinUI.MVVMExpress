@@ -14,6 +14,8 @@
     <Project Path="tests/Plugin.WinUI.MVVMExpress.Validation.Tests/Plugin.WinUI.MVVMExpress.Validation.Tests.csproj" />
     <Project Path="tests/Plugin.WinUI.MVVMExpress.Pagination.Tests/Plugin.WinUI.MVVMExpress.Pagination.Tests.csproj" />
     <Project Path="tests/Plugin.WinUI.MVVMExpress.Templates.Tests/Plugin.WinUI.MVVMExpress.Templates.Tests.csproj" />
+    <Project Path="tests/Plugin.WinUI.MVVMExpress.Navigation.Tests/Plugin.WinUI.MVVMExpress.Navigation.Tests.csproj" />
+    <Project Path="tests/Plugin.WinUI.MVVMExpress.Dialogs.Tests/Plugin.WinUI.MVVMExpress.Dialogs.Tests.csproj" />
   </Folder>
   <Folder Name="/samples/">
     <Project Path="samples/Playground/Plugin.WinUI.MVVMExpress.Playground.csproj" />

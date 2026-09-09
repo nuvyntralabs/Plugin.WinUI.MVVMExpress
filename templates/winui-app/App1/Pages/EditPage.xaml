@@ -1,0 +1,10 @@
+<Page
+    x:Class="App1.Pages.EditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StackPanel Margin="24" Spacing="8">
+    <TextBox Header="Name" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+    <Button Content="Save" Command="{Binding SaveCommand}" />
+    <Button Content="Back" Command="{Binding BackCommand}" />
+  </StackPanel>
+</Page>

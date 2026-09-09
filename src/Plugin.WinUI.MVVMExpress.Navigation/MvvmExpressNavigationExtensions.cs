@@ -9,6 +9,7 @@ namespace Plugin.WinUI.MVVMExpress.Navigation;
 
 public static class MvvmExpressNavigationExtensions
 {
+    /// <summary>Registers the Frame navigator and <see cref="INavigator"/>.</summary>
     public static MvvmExpressOptions UseFrameNavigation(
         this MvvmExpressOptions options,
         Action<WinUIFrameNavigator, IServiceProvider>? configure = null)

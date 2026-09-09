@@ -1,0 +1,52 @@
+{
+  "name": "winui-mvvmexpress",
+  "displayName": "WinUI MVVMExpress",
+  "description": "Create WinUI MVVMExpress apps and pages via dotnet new. Templates stay in Plugin.WinUI.MVVMExpress.Templates.",
+  "version": "1.0.0",
+  "publisher": "nuvyntralabs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nuvyntralabs/Plugin.WinUI.MVVMExpress.git"
+  },
+  "homepage": "https://github.com/nuvyntralabs/Plugin.WinUI.MVVMExpress/tree/main/extensions",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "winui",
+    "mvvm",
+    "mvvmexpress",
+    "dotnet",
+    "templates"
+  ],
+  "activationEvents": [
+    "onCommand:winuimvvmexpress.createApp",
+    "onCommand:winuimvvmexpress.addPage"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "winuimvvmexpress.createApp",
+        "title": "WinUI MVVMExpress: Create New App"
+      },
+      {
+        "command": "winuimvvmexpress.addPage",
+        "title": "WinUI MVVMExpress: Add Page"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.5.0"
+  }
+}

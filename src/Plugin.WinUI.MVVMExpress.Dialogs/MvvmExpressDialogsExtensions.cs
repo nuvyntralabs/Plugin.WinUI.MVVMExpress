@@ -6,6 +6,7 @@ namespace Plugin.WinUI.MVVMExpress.Dialogs;
 
 public static class MvvmExpressDialogsExtensions
 {
+    /// <summary>Registers <see cref="IDialogs"/> and <see cref="INotifier"/>.</summary>
     public static MvvmExpressOptions UseDialogs(this MvvmExpressOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);

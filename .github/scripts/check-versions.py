@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
+import re
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -59,6 +61,39 @@ def project_version(csproj: Path, product: str) -> str:
     return product
 
 
+def read_json_version(path: Path) -> str:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        fail(f"Could not read {path}: {exc}")
+    version = data.get("version")
+    if not isinstance(version, str) or not version.strip():
+        fail(f"{path} has no version")
+    return version.strip()
+
+
+def read_vsix_version(path: Path) -> str:
+    try:
+        tree = ET.parse(path)
+    except (ET.ParseError, OSError) as exc:
+        fail(f"Could not parse {path}: {exc}")
+    for element in tree.iter():
+        if local_name(element.tag) == "Identity":
+            version = element.attrib.get("Version", "").strip()
+            if version:
+                return version
+    fail(f"{path} has no Identity Version")
+    return ""
+
+
+def read_regex(path: Path, pattern: str) -> str:
+    text = path.read_text(encoding="utf-8")
+    match = re.search(pattern, text)
+    if not match:
+        fail(f"{path} does not match {pattern}")
+    return match.group(1)
+
+
 def collect_library(plugin_root: Path, product: str) -> dict[str, str]:
     versions: dict[str, str] = {}
     src = plugin_root / "src"
@@ -86,29 +121,70 @@ def collect_library(plugin_root: Path, product: str) -> dict[str, str]:
     return versions
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--plugin-root", default=".")
-    parser.add_argument("--scope", choices=("library", "all"), default="library")
-    args = parser.parse_args()
-    plugin_root = Path(args.plugin_root).resolve()
+def collect_extensions(plugin_root: Path) -> dict[str, str]:
+    return {
+        "extensions/vscode/package.json": read_json_version(plugin_root / "extensions/vscode/package.json"),
+        "extensions/visualstudio/source.extension.vsixmanifest": read_vsix_version(
+            plugin_root / "extensions/visualstudio/source.extension.vsixmanifest"
+        ),
+        "extensions/vscode/src/constants.ts": read_regex(
+            plugin_root / "extensions/vscode/src/constants.ts",
+            r'templatePackageVersion\s*=\s*"([^"]+)"',
+        ),
+        "extensions/visualstudio/DotnetTemplates.cs": read_regex(
+            plugin_root / "extensions/visualstudio/DotnetTemplates.cs",
+            r'PackageVersion\s*=\s*"([^"]+)"',
+        ),
+        "extensions/visualstudio/WinUIMvvmExpressPackage.cs": read_regex(
+            plugin_root / "extensions/visualstudio/WinUIMvvmExpressPackage.cs",
+            r'InstalledProductRegistration\("WinUI MVVMExpress",\s*"[^"]+",\s*"([^"]+)"\)',
+        ),
+    }
+
+
+def collect(plugin_root: Path, scope: str) -> dict[str, str]:
     props = plugin_root / "Directory.Build.props"
     product = first_property(props, "Version")
     if not product:
         fail(f"{props} has no Version")
-    versions = {str(Path("Directory.Build.props")) + " Version": product}
-    versions.update(collect_library(plugin_root, product))
-    print(f"Version alignment (library, must all equal):")
+
+    versions: dict[str, str] = {str(props.relative_to(plugin_root)) + " Version": product}
+    if scope in ("library", "all"):
+        versions.update(collect_library(plugin_root, product))
+    if scope in ("extensions", "all"):
+        versions.update(collect_extensions(plugin_root))
+    return versions
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--plugin-root", default=".")
+    parser.add_argument(
+        "--scope",
+        choices=("library", "extensions", "all"),
+        default="all",
+        help="library = NuGet packages; extensions = VSIX wrappers; all = both",
+    )
+    args = parser.parse_args()
+    plugin_root = Path(args.plugin_root).resolve()
+    if not plugin_root.is_dir():
+        fail(f"Plugin folder not found: {plugin_root}")
+
+    versions = collect(plugin_root, args.scope)
+    product = versions[str(Path("Directory.Build.props")) + " Version"]
+    print(f"Version alignment ({args.scope}, must all equal):")
     mismatched: list[str] = []
     for label, version in versions.items():
         mark = "OK" if version == product else "MISMATCH"
         print(f"  [{mark}] {version}  {label}")
         if version != product:
             mismatched.append(f"{label}={version}")
+
     if mismatched:
         fail(f"Versions must match {product}. Fix: " + ", ".join(mismatched))
+
     write_output("version", product)
-    print(f"Version {product} is aligned (library)")
+    print(f"Version {product} is aligned ({args.scope})")
     return 0
 
 

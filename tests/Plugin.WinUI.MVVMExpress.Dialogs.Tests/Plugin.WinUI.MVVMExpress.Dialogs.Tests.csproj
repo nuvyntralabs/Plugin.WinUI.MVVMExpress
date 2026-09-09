@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <RootNamespace>Plugin.WinUI.MVVMExpress.Dialogs.Tests</RootNamespace>
+    <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <EnableMsixTooling>false</EnableMsixTooling>
+    <EnableCoreMrtTooling>false</EnableCoreMrtTooling>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Dialogs\Plugin.WinUI.MVVMExpress.Dialogs.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress\Plugin.WinUI.MVVMExpress.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Testing\Plugin.WinUI.MVVMExpress.Testing.csproj" />
+  </ItemGroup>
+
+</Project>

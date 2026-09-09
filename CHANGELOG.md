@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0
+
+- First stable release. Full app templates, IDE extensions, host/navigator tests, and known limitations.
+
 ## 0.1.0-preview
 
 - Independent WinUI 3 family (no sibling MVVMExpress package references).

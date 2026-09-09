@@ -51,8 +51,8 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "${NUGET_KEY}" ]; then
-            echo "::error::NUGET_KEY_WINUI secret is empty. Add a nuget.org API key scoped to Plugin.WinUI.*."
-            exit 1
+            echo "::warning::NUGET_KEY_WINUI is not set yet. Tests and pack still run; nuget.org publish is skipped until the secret exists."
+            exit 0
           fi
           python3 .ci-tools/.github/scripts/check-nuget-release.py --plugin-root .
 
@@ -106,6 +106,8 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "10.0.x"
+      - run: dotnet test tests/Plugin.WinUI.MVVMExpress.Navigation.Tests/Plugin.WinUI.MVVMExpress.Navigation.Tests.csproj -c Release --nologo
+      - run: dotnet test tests/Plugin.WinUI.MVVMExpress.Dialogs.Tests/Plugin.WinUI.MVVMExpress.Dialogs.Tests.csproj -c Release --nologo
       - run: |
           dotnet pack src/Plugin.WinUI.MVVMExpress/Plugin.WinUI.MVVMExpress.csproj -c Release -o artifacts
           dotnet pack src/Plugin.WinUI.MVVMExpress.Navigation/Plugin.WinUI.MVVMExpress.Navigation.csproj -c Release -o artifacts
@@ -152,7 +154,7 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "${NUGET_KEY}" ]; then
-            echo "::error::NUGET_KEY_WINUI secret is empty."
-            exit 1
+            echo "::warning::NUGET_KEY_WINUI is not set yet. Tests and pack still run; nuget.org publish is skipped until the secret exists."
+            exit 0
           fi
           python3 .ci-tools/.github/scripts/push-nuget-packages.py --packages-dir packages
