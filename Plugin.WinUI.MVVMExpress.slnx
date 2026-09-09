@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Plugin.WinUI.MVVMExpress.Core/Plugin.WinUI.MVVMExpress.Core.csproj" />
+    <Project Path="src/Plugin.WinUI.MVVMExpress/Plugin.WinUI.MVVMExpress.csproj" />
+    <Project Path="src/Plugin.WinUI.MVVMExpress.Navigation/Plugin.WinUI.MVVMExpress.Navigation.csproj" />
+    <Project Path="src/Plugin.WinUI.MVVMExpress.Dialogs/Plugin.WinUI.MVVMExpress.Dialogs.csproj" />
+    <Project Path="src/Plugin.WinUI.MVVMExpress.Validation/Plugin.WinUI.MVVMExpress.Validation.csproj" />
+    <Project Path="src/Plugin.WinUI.MVVMExpress.Pagination/Plugin.WinUI.MVVMExpress.Pagination.csproj" />
+    <Project Path="src/Plugin.WinUI.MVVMExpress.Testing/Plugin.WinUI.MVVMExpress.Testing.csproj" />
+    <Project Path="src/Plugin.WinUI.MVVMExpress.Templates/Plugin.WinUI.MVVMExpress.Templates.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Plugin.WinUI.MVVMExpress.Core.Tests/Plugin.WinUI.MVVMExpress.Core.Tests.csproj" />
+    <Project Path="tests/Plugin.WinUI.MVVMExpress.Validation.Tests/Plugin.WinUI.MVVMExpress.Validation.Tests.csproj" />
+    <Project Path="tests/Plugin.WinUI.MVVMExpress.Pagination.Tests/Plugin.WinUI.MVVMExpress.Pagination.Tests.csproj" />
+    <Project Path="tests/Plugin.WinUI.MVVMExpress.Templates.Tests/Plugin.WinUI.MVVMExpress.Templates.Tests.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/Playground/Plugin.WinUI.MVVMExpress.Playground.csproj" />
+  </Folder>
+</Solution>

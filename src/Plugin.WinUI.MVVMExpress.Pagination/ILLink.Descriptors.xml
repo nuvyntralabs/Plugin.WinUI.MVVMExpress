@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<linker>
+  <assembly fullname="Plugin.WinUI.MVVMExpress.Pagination">
+    <type fullname="Plugin.WinUI.MVVMExpress.Pagination.PagedCollection`1" preserve="all" />
+    <type fullname="Plugin.WinUI.MVVMExpress.Pagination.SnapshotCollection`1" preserve="all" />
+    <type fullname="Plugin.WinUI.MVVMExpress.Pagination.SearchQuery" preserve="all" />
+  </assembly>
+</linker>

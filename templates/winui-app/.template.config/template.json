@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Niladri Prasad Padhy",
+  "classifications": ["WinUI 3", "MVVM", "MauiEssentials"],
+  "identity": "Plugin.WinUI.MVVMExpress.App",
+  "name": "WinUI 3 MVVMExpress App",
+  "shortName": "winui-mvvmexpress",
+  "sourceName": "App1",
+  "preferNameDirectory": true
+}

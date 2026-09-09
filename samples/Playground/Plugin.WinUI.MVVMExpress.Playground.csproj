@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Plugin.WinUI.MVVMExpress.Playground</RootNamespace>
+    <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <EnableMsixTooling>false</EnableMsixTooling>
+    <EnableCoreMrtTooling>false</EnableCoreMrtTooling>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress\Plugin.WinUI.MVVMExpress.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Navigation\Plugin.WinUI.MVVMExpress.Navigation.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Dialogs\Plugin.WinUI.MVVMExpress.Dialogs.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Validation\Plugin.WinUI.MVVMExpress.Validation.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Pagination\Plugin.WinUI.MVVMExpress.Pagination.csproj" />
+  </ItemGroup>
+</Project>

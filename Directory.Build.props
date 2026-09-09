@@ -1,0 +1,26 @@
+<Project>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>9999</WarningLevel>
+    <EnforceCodeStyleInBuild Condition="'$(IsTestProject)' != 'true'">true</EnforceCodeStyleInBuild>
+    <Authors>Niladri</Authors>
+    <Company>MauiEssentials</Company>
+    <Copyright>Copyright © 2026 Niladri</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://nuvyntralabs.github.io/packages/plugin-winui-mvvmexpress/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nuvyntralabs/Plugin.WinUI.MVVMExpress</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <Version>0.1.0-preview</Version>
+    <PackageReleaseNotes>0.1.0-preview: first WinUI 3 MVVMExpress. Frame navigation, ContentDialog, overlay toasts.</PackageReleaseNotes>
+    <PackageTags>winui;windowsappsdk;dotnet;mvvm;mvvm-express;commands;async-state;navigation;dialogs;mauiessentials;nuget</PackageTags>
+  </PropertyGroup>
+</Project>

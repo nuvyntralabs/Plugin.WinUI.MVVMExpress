@@ -1,0 +1,31 @@
+# Plugin.WinUI.MVVMExpress.Validation
+
+IValidator + DataAnnotationsValidator for MVVMExpress. ILLink.Descriptors.xml roots Required/MinLength/MustMatch and the other 0.6 DataAnnotations.
+
+NuGet: https://www.nuget.org/packages/Plugin.WinUI.MVVMExpress.Validation
+GitHub: https://github.com/nuvyntralabs/Plugin.WinUI.MVVMExpress
+Docs: https://nuvyntralabs.github.io/packages/plugin-winui-mvvmexpress/
+Catalog: https://github.com/nuvyntralabs/MauiEssentials
+License: MIT
+Version: 1.3.0
+
+## Supported versions
+
+net10.0 only.
+
+## Installation
+
+dotnet add package Plugin.WinUI.MVVMExpress.Validation
+
+## Use this package when
+
+- ViewModels already use MVVMExpress and need DataAnnotations / IValidator
+
+## Do not use when
+
+- They need MAUI attached-property Entry UX — use Plugin.Maui.FormValidation
+- They already standardize on FluentValidation as the only engine
+
+## Alternatives
+
+Plugin.Maui.FormValidation, FluentValidation, CommunityToolkit.Mvvm ObservableValidator.

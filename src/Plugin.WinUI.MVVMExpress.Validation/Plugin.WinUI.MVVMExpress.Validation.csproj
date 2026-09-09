@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsAotCompatible>true</IsAotCompatible>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+    <RootNamespace>Plugin.WinUI.MVVMExpress.Validation</RootNamespace>
+    <AssemblyName>Plugin.WinUI.MVVMExpress.Validation</AssemblyName>
+    <PackageId>Plugin.WinUI.MVVMExpress.Validation</PackageId>
+    <PackageIcon>icon.png</PackageIcon>
+    <Title>WPF MVVMExpress — DataAnnotations validation</Title>
+    <Description>IValidator and DataAnnotationsValidator for Plugin.WinUI.MVVMExpress. FluentValidation remains an optional app-level adapter.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plugin.WinUI.MVVMExpress.Core\Plugin.WinUI.MVVMExpress.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TrimmerRootDescriptor Include="ILLink.Descriptors.xml" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\..\nuget.png" Pack="true" PackagePath="icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Plugin.WinUI.MVVMExpress.Validation.Tests" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <WinUIMvvmExpressVersion>0.1.0-preview</WinUIMvvmExpressVersion>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsAotCompatible>true</IsAotCompatible>
+    <RootNamespace>Plugin.WinUI.MVVMExpress.Testing</RootNamespace>
+    <AssemblyName>Plugin.WinUI.MVVMExpress.Testing</AssemblyName>
+    <PackageId>Plugin.WinUI.MVVMExpress.Testing</PackageId>
+    <PackageIcon>icon.png</PackageIcon>
+    <Title>WPF MVVMExpress — test fakes</Title>
+    <Description>LeakProbe, ScaleProfile, FakeDialogs, FakeNavigator, FakeMainThread, FakeConnectivity, FakeMessageHub, and ScopedNavigator for unit-testing Plugin.WinUI.MVVMExpress ViewModels.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plugin.WinUI.MVVMExpress.Core\Plugin.WinUI.MVVMExpress.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\..\nuget.png" Pack="true" PackagePath="icon.png" />
+  </ItemGroup>
+
+</Project>

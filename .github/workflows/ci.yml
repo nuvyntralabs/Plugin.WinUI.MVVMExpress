@@ -1,0 +1,158 @@
+# WinUI family. nuget.org uses NUGET_KEY_WINUI (Plugin.WinUI.*). GitHub Packages uses GITHUB_TOKEN.
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*.*.*"]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  version-align:
+    name: Version alignment
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require matching packable package versions
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/check-versions.py --plugin-root . --scope library
+
+  version-check:
+    name: NuGet release
+    needs: [version-align]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: nuvyntralabs/MauiEssentials
+          ref: main
+          path: .ci-tools
+      - name: Check NUGET_KEY_WINUI and published version
+        env:
+          NUGET_KEY: ${{ secrets.NUGET_KEY_WINUI }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NUGET_KEY}" ]; then
+            echo "::error::NUGET_KEY_WINUI secret is empty. Add a nuget.org API key scoped to Plugin.WinUI.*."
+            exit 1
+          fi
+          python3 .ci-tools/.github/scripts/check-nuget-release.py --plugin-root .
+
+  test:
+    name: Unit tests
+    needs: [version-check]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - run: dotnet test tests/Plugin.WinUI.MVVMExpress.Core.Tests/Plugin.WinUI.MVVMExpress.Core.Tests.csproj -c Release --nologo
+      - run: dotnet test tests/Plugin.WinUI.MVVMExpress.Validation.Tests/Plugin.WinUI.MVVMExpress.Validation.Tests.csproj -c Release --nologo
+      - run: dotnet test tests/Plugin.WinUI.MVVMExpress.Pagination.Tests/Plugin.WinUI.MVVMExpress.Pagination.Tests.csproj -c Release --nologo
+      - run: dotnet test tests/Plugin.WinUI.MVVMExpress.Templates.Tests/Plugin.WinUI.MVVMExpress.Templates.Tests.csproj -c Release --nologo
+
+  linux:
+    name: Pack linux
+    needs: [test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - run: |
+          dotnet pack src/Plugin.WinUI.MVVMExpress.Core/Plugin.WinUI.MVVMExpress.Core.csproj -c Release -o artifacts
+          dotnet pack src/Plugin.WinUI.MVVMExpress.Validation/Plugin.WinUI.MVVMExpress.Validation.csproj -c Release -o artifacts
+          dotnet pack src/Plugin.WinUI.MVVMExpress.Pagination/Plugin.WinUI.MVVMExpress.Pagination.csproj -c Release -o artifacts
+          dotnet pack src/Plugin.WinUI.MVVMExpress.Testing/Plugin.WinUI.MVVMExpress.Testing.csproj -c Release -o artifacts
+          dotnet pack src/Plugin.WinUI.MVVMExpress.Templates/Plugin.WinUI.MVVMExpress.Templates.csproj -c Release -o artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nuget-linux
+          path: |
+            artifacts/*.nupkg
+            artifacts/*.snupkg
+
+  windows:
+    name: Pack windows
+    needs: [test]
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+      - run: |
+          dotnet pack src/Plugin.WinUI.MVVMExpress/Plugin.WinUI.MVVMExpress.csproj -c Release -o artifacts
+          dotnet pack src/Plugin.WinUI.MVVMExpress.Navigation/Plugin.WinUI.MVVMExpress.Navigation.csproj -c Release -o artifacts
+          dotnet pack src/Plugin.WinUI.MVVMExpress.Dialogs/Plugin.WinUI.MVVMExpress.Dialogs.csproj -c Release -o artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nuget-windows
+          path: |
+            artifacts/*.nupkg
+            artifacts/*.snupkg
+
+  publish:
+    name: nuget.org and GitHub Packages
+    needs: [linux, windows]
+    if: success()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: nuvyntralabs/MauiEssentials
+          ref: main
+          path: .ci-tools
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+      - uses: actions/download-artifact@v4
+        with:
+          name: nuget-linux
+          path: packages
+      - uses: actions/download-artifact@v4
+        with:
+          name: nuget-windows
+          path: packages
+      - name: Push nupkg
+        env:
+          NUGET_KEY: ${{ secrets.NUGET_KEY_WINUI }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NUGET_KEY}" ]; then
+            echo "::error::NUGET_KEY_WINUI secret is empty."
+            exit 1
+          fi
+          python3 .ci-tools/.github/scripts/push-nuget-packages.py --packages-dir packages

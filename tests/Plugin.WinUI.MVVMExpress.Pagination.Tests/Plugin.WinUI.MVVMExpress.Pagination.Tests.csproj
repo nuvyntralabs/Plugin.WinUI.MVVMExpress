@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Plugin.WinUI.MVVMExpress.Pagination.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Pagination\Plugin.WinUI.MVVMExpress.Pagination.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Testing\Plugin.WinUI.MVVMExpress.Testing.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Plugin.WinUI.MVVMExpress.Core.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Core\Plugin.WinUI.MVVMExpress.Core.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Testing\Plugin.WinUI.MVVMExpress.Testing.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Plugin.WinUI.MVVMExpress.Validation.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Validation\Plugin.WinUI.MVVMExpress.Validation.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.WinUI.MVVMExpress.Testing\Plugin.WinUI.MVVMExpress.Testing.csproj" />
+    <Content Include="..\..\src\Plugin.WinUI.MVVMExpress.Validation\ILLink.Descriptors.xml" Link="ILLink.Descriptors.xml" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>Plugin.WinUI.MVVMExpress</RootNamespace>
+    <AssemblyName>Plugin.WinUI.MVVMExpress</AssemblyName>
+    <PackageId>Plugin.WinUI.MVVMExpress</PackageId>
+    <PackageIcon>icon.png</PackageIcon>
+    <Title>WinUI MVVMExpress host — DI, DispatcherQueue, lifecycle</Title>
+    <Description>WinUI 3 host for MVVMExpress: UseWinUIMvvmExpress, DispatcherQueueMainThread, window context, and Loaded/Unloaded ViewModel lifecycle. Depends on Plugin.WinUI.MVVMExpress.Core.</Description>
+    <EnableCoreMrtTooling>false</EnableCoreMrtTooling>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plugin.WinUI.MVVMExpress.Core\Plugin.WinUI.MVVMExpress.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\..\nuget.png" Pack="true" PackagePath="icon.png" />
+  </ItemGroup>
+</Project>

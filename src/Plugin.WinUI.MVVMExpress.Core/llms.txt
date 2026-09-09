@@ -1,0 +1,6 @@
+# Plugin.WinUI.MVVMExpress.Core
+
+UI-framework-free MVVM primitives. net10.0. No WPF or MAUI reference.
+
+Install: `dotnet add package Plugin.WinUI.MVVMExpress.Core`
+Register: `services.AddMvvmExpress()`

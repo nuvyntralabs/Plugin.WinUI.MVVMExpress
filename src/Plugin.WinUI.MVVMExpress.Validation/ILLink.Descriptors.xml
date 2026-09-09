@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<linker>
+  <assembly fullname="System.ComponentModel.Annotations">
+    <type fullname="System.ComponentModel.DataAnnotations.RequiredAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.StringLengthAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.MinLengthAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.MaxLengthAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.RangeAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.RegularExpressionAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.EmailAddressAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.CompareAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.ValidationAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.Validator" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.ValidationContext" preserve="all" />
+    <type fullname="System.ComponentModel.DataAnnotations.ValidationResult" preserve="all" />
+  </assembly>
+  <assembly fullname="Plugin.WinUI.MVVMExpress.Validation">
+    <type fullname="Plugin.WinUI.MVVMExpress.Validation.MustMatchAttribute" preserve="all" />
+    <type fullname="Plugin.WinUI.MVVMExpress.Validation.DataAnnotationsValidator" preserve="all" />
+  </assembly>
+</linker>

@@ -1,0 +1,14 @@
+# Plugin.WinUI.MVVMExpress
+
+Independent WinUI 3 MVVM framework. Not a MAUI package.
+
+- NuGet: https://www.nuget.org/packages/Plugin.WinUI.MVVMExpress.Core
+- GitHub: https://github.com/nuvyntralabs/Plugin.WinUI.MVVMExpress
+- Docs: https://nuvyntralabs.github.io/packages/plugin-winui-mvvmexpress/
+- Install: `dotnet add package Plugin.WinUI.MVVMExpress`
+- Register: `builder.Services.UseWinUIMvvmExpress(o => o.UseFrameNavigation(...).UseDialogs())`
+- Version: 0.1.0-preview
+- TFMs: net10.0 (Core) and net10.0-windows10.0.19041.0 (host)
+- Template: `dotnet new install Plugin.WinUI.MVVMExpress.Templates` then `dotnet new winui-mvvmexpress`
+
+Do not use when the app is MAUI (use Plugin.Maui.MVVMExpress) or when CommunityToolkit.Mvvm properties/commands are enough.

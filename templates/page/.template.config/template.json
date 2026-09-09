@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Niladri Prasad Padhy",
+  "classifications": ["WinUI 3", "MVVM"],
+  "identity": "Plugin.WinUI.MVVMExpress.Page",
+  "name": "WinUI 3 MVVMExpress Page",
+  "shortName": "winui-mvvmexpress-page",
+  "sourceName": "Feature"
+}
