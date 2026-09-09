@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ide-extensions-${ github.ref }
+  group: ide-extensions-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
       run:
         shell: bash
     outputs:
-      version: ${ steps.check.outputs.version }
+      version: ${{ steps.check.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,7 +57,7 @@ jobs:
       - name: Pack VSIX
         run: |
           set -euo pipefail
-          version="${ needs.version-align.outputs.version }"
+          version="${{ needs.version-align.outputs.version }}"
           mkdir -p artifacts
           chmod +x extensions/vscode/pack.sh
           ./extensions/vscode/pack.sh "$PWD/artifacts/nuvyntralabs.winui-mvvmexpress-${version}.vsix"
@@ -96,7 +96,7 @@ jobs:
       - name: Pack VSIX
         run: |
           set -euo pipefail
-          version="${ needs.version-align.outputs.version }"
+          version="${{ needs.version-align.outputs.version }}"
           mkdir -p artifacts
           chmod +x extensions/visualstudio/pack-vsix.sh
           ./extensions/visualstudio/pack-vsix.sh "$PWD/artifacts/nuvyntralabs.WinUIMVVMExpress.VisualStudio.${version}.vsix"
