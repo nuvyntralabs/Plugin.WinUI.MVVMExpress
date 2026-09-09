@@ -71,6 +71,16 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+      - name: Summary
+        run: |
+          {
+            echo "### VS Code VSIX"
+            echo
+            echo "Download: [vscode-WinUIMVVMExpress](${{ steps.upload.outputs.artifact-url }})"
+            echo
+            echo "Then update the Visual Studio Code listing at [Marketplace manage](https://marketplace.visualstudio.com/manage)."
+          } >> "$GITHUB_STEP_SUMMARY"
+
   vsix:
     name: Visual Studio VSIX
     needs: [version-align]
@@ -109,3 +119,13 @@ jobs:
           path: artifacts/nuvyntralabs.WinUIMVVMExpress.VisualStudio.*.vsix
           if-no-files-found: error
           retention-days: 14
+
+      - name: Summary
+        run: |
+          {
+            echo "### Visual Studio VSIX"
+            echo
+            echo "Download: [vsix-WinUIMVVMExpress](${{ steps.upload.outputs.artifact-url }})"
+            echo
+            echo "Then update **WinUI MVVMExpress for Visual Studio** at [Marketplace manage](https://marketplace.visualstudio.com/manage). Do not create a new listing."
+          } >> "$GITHUB_STEP_SUMMARY"
