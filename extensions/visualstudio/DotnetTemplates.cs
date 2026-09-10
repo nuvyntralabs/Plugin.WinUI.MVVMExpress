@@ -25,7 +25,7 @@ internal sealed class DotnetResult
 internal static class DotnetTemplates
 {
     public const string PackageId = "Plugin.WinUI.MVVMExpress.Templates";
-    public const string PackageVersion = "1.0.0";
+    public const string PackageVersion = "1.0.1";
     public const string AppShortName = "winui-mvvmexpress";
     public const string PageShortName = "winui-mvvmexpress-page";
     public const string DefaultAppName = "App1";
