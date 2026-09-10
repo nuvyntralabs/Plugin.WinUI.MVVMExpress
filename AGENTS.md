@@ -7,7 +7,7 @@ Modular MVVM application framework for WinUI 3.
 - Product: MVVMExpress (WinUI 3 family)
 - Package prefix: `Plugin.WinUI.MVVMExpress`
 - Catalog: https://github.com/nuvyntralabs/MauiEssentials
-- Status: **1.0.0**
+- Status: **1.0.1**
 - TFMs: Core/Validation/Pagination/Testing `net10.0`; Host/Navigation/Dialogs `net10.0-windows10.0.19041.0`
 
 ## When to consider this repository

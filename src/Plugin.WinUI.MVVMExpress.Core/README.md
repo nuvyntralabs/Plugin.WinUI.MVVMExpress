@@ -24,7 +24,7 @@ public sealed class HomeViewModel : ViewModel
 dotnet add package Plugin.WinUI.MVVMExpress.Core
 ```
 
-Target framework: `net10.0`. Version `1.0.0`.
+Target framework: `net10.0`. Version `1.0.1`.
 
 ```csharp
 services.AddMvvmExpress(); // tests and shared libraries

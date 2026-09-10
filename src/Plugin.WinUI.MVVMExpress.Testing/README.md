@@ -24,7 +24,7 @@ Also: `FakeDialogs`, `FakeMainThread`, `FakeConnectivity`, `FakeMessageHub`, `Sc
 dotnet add package Plugin.WinUI.MVVMExpress.Testing
 ```
 
-Target framework: `net10.0`. Depends on [Core](https://www.nuget.org/packages/Plugin.WinUI.MVVMExpress.Core). Reference from test projects only. Version `1.0.0`.
+Target framework: `net10.0`. Depends on [Core](https://www.nuget.org/packages/Plugin.WinUI.MVVMExpress.Core). Reference from test projects only. Version `1.0.1`.
 
 ## Related
 

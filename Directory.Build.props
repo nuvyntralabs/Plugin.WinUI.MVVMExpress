@@ -19,8 +19,8 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
-    <Version>1.0.0</Version>
-    <PackageReleaseNotes>1.0.0: first stable WinUI 3 MVVMExpress. Frame navigation, ContentDialog, overlay toasts, templates, IDE extensions.</PackageReleaseNotes>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>1.0.1: NuGet README files use real markdown line breaks so the gallery renders.</PackageReleaseNotes>
     <PackageTags>winui;windowsappsdk;dotnet;mvvm;mvvm-express;commands;async-state;navigation;dialogs;mauiessentials;nuget</PackageTags>
   </PropertyGroup>
 </Project>

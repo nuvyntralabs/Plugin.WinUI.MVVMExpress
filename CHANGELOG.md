@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Pack Host / Navigation / Dialogs / Templates README files as real markdown so nuget.org renders them.
+
 ## 1.0.0
 
 - First stable release. Full app templates, IDE extensions, host/navigator tests, and known limitations.

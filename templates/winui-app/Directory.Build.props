@@ -4,6 +4,6 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
-    <WinUIMvvmExpressVersion>1.0.0</WinUIMvvmExpressVersion>
+    <WinUIMvvmExpressVersion>1.0.1</WinUIMvvmExpressVersion>
   </PropertyGroup>
 </Project>

@@ -11,7 +11,7 @@ This is not the MAUI MVVMExpress extension.
 
 After the template pack is installed, Visual Studio’s **File → New → Project** lists **MVVMExpress WinUI App** (`ide.host.json` on the project template). **Add → New Item** lists **MVVMExpress WinUI Page**.
 
-Requires the .NET SDK on PATH. Extension version is `1.0.0`, same as Plugin.WinUI.MVVMExpress.
+Requires the .NET SDK on PATH. Extension version is `1.0.1`, same as Plugin.WinUI.MVVMExpress.
 
 ## Install from Marketplace
 
@@ -26,12 +26,12 @@ In the editor: **Extensions** → search **WinUI MVVMExpress** → **Install**. 
 
 ## Install (sideload)
 
-Packed installers (version `1.0.0`) are in [`dist/`](dist/):
+Packed installers (version `1.0.1`) are in [`dist/`](dist/):
 
 | Host | File | Install |
 | --- | --- | --- |
-| Visual Studio Code | `dist/nuvyntralabs.winui-mvvmexpress-1.0.0.vsix` | `code --install-extension extensions/dist/nuvyntralabs.winui-mvvmexpress-1.0.0.vsix` |
-| Visual Studio 2022+ | `dist/nuvyntralabs.WinUIMVVMExpress.VisualStudio.1.0.0.vsix` | Double-click the `.vsix`, or **Extensions → Manage Extensions → Install from VSIX…** |
+| Visual Studio Code | `dist/nuvyntralabs.winui-mvvmexpress-1.0.1.vsix` | `code --install-extension extensions/dist/nuvyntralabs.winui-mvvmexpress-1.0.1.vsix` |
+| Visual Studio 2022+ | `dist/nuvyntralabs.WinUIMVVMExpress.VisualStudio.1.0.1.vsix` | Double-click the `.vsix`, or **Extensions → Manage Extensions → Install from VSIX…** |
 
 After Visual Studio install, the package loads in the background and installs `Plugin.WinUI.MVVMExpress.Templates`, so **File → New → Project** lists **MVVMExpress WinUI App**. **Tools → WinUI MVVMExpress** is present after install.
 

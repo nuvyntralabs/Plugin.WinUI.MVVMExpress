@@ -4,7 +4,7 @@ Modular MVVM for **WinUI 3** on .NET 10: ViewModels, async commands, Frame navig
 
 **Product:** MVVMExpress (WinUI 3 family)
 **Package prefix:** `Plugin.WinUI.MVVMExpress`
-**Status:** `1.0.0`
+**Status:** `1.0.1`
 **This is not** Plugin.Maui.MVVMExpress, Plugin.Wpf.MVVMExpress, or the other desktop families. Independent port — no PackageReference to those packages.
 
 [![NuGet](https://img.shields.io/nuget/v/Plugin.WinUI.MVVMExpress.Core.svg?label=NuGet)](https://www.nuget.org/packages/Plugin.WinUI.MVVMExpress.Core)
