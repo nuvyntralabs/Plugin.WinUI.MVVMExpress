@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/nuvyntralabs/Plugin.WinUI.MVVMExpress.git"
   },
-  "homepage": "https://github.com/nuvyntralabs/Plugin.WinUI.MVVMExpress/tree/main/extensions",
+  "homepage": "https://nuvyntralabs.github.io/packages/plugin-winui-mvvmexpress/",
   "engines": {
     "vscode": "^1.90.0"
   },

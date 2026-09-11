@@ -4,7 +4,7 @@
     <Identity Id="nuvyntralabs.WinUIMVVMExpress.VisualStudio" Version="1.0.1" Language="en-US" Publisher="Nuvyntra Labs" />
     <DisplayName>WinUI MVVMExpress for Visual Studio</DisplayName>
     <Description xml:space="preserve">Install Plugin.WinUI.MVVMExpress.Templates and create WinUI MVVMExpress apps and pages via dotnet new.</Description>
-    <MoreInfo>https://github.com/nuvyntralabs/Plugin.WinUI.MVVMExpress</MoreInfo>
+    <MoreInfo>https://nuvyntralabs.github.io/packages/plugin-winui-mvvmexpress/</MoreInfo>
     <License>LICENSE</License>
     <Tags>WinUI;MVVM;templates;dotnet new;mvvmexpress</Tags>
   </Metadata>
